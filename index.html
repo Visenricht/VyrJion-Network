@@ -1,843 +1,433 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>VyrJion Studios</title>
-
+  <title>VyrJion Studios®</title>
   <style>
-
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
-
-
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
 
     :root {
-
       --primary: #00f5ff;
-
       --accent: #ff00aa;
-
+      --dark: #0a0a0a;
     }
 
-
-
-    * {
-
-      margin: 0;
-
-      padding: 0;
-
-      box-sizing: border-box;
-
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
     }
-
-
 
     body {
-
       font-family: 'Inter', system-ui, sans-serif;
-
-      background: #0a0a0a;
-
+      background: var(--dark);
       color: #e0e0e0;
-
       line-height: 1.6;
-
       overflow-x: hidden;
-
     }
-
-
 
     header {
-
       position: fixed;
-
-      top: 0;
-
-      left: 0;
-
-      right: 0;
-
-      background: rgba(15, 15, 15, 0.95);
-
-      backdrop-filter: blur(12px);
-
-      border-bottom: 1px solid rgba(0, 245, 255, 0.2);
-
+      top: 0; left: 0; right: 0;
+      background: rgba(10, 10, 10, 0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 245, 255, 0.25);
       z-index: 1000;
-
-      padding: 16px 5%;
-
+      padding: 14px 5%;
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
     }
-
-
 
     .logo {
-
       display: flex;
-
       align-items: center;
-
       gap: 12px;
-
       font-family: 'Space Grotesk', sans-serif;
-
-      font-size: 28px;
-
-      font-weight: 600;
-
+      font-size: 26px;
+      font-weight: 700;
       color: white;
-
       text-decoration: none;
-
     }
 
-
-
-    .logo::before {
-
-      content: '';
-
-      display: inline-block;
-
-      width: 32px;
-
-      height: 32px;
-
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-
-      border-radius: 6px;
-
-      box-shadow: 0 0 20px rgba(0, 245, 255, 0.6);
-
+    .logo img {
+      height: 54px;
+      width: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 25px rgba(0, 245, 255, 0.4);
     }
-
-
 
     nav {
-
       display: flex;
-
-      gap: 8px;
-
+      gap: 6px;
       flex-wrap: wrap;
-
     }
-
-
 
     nav a {
-
       color: #ddd;
-
       text-decoration: none;
-
-      padding: 10px 20px;
-
-      border-radius: 8px;
-
+      padding: 10px 22px;
+      border-radius: 9999px;
       font-weight: 500;
-
-      transition: all 0.3s ease;
-
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       font-size: 15px;
-
     }
-
-
 
     nav a:hover {
-
-      background: rgba(0, 245, 255, 0.1);
-
+      background: rgba(0, 245, 255, 0.12);
       color: var(--primary);
-
       transform: translateY(-2px);
-
     }
-
-
 
     .hero {
-
       height: 100vh;
-
-      min-height: 600px;
-
-      background: linear-gradient(rgba(10,10,10,0.75), rgba(10,10,10,0.85)), 
-
+      min-height: 680px;
+      background: linear-gradient(135deg, rgba(10,10,10,0.85), rgba(10,10,10,0.92)), 
                   url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       text-align: center;
-
       position: relative;
-
     }
 
-
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,245,255,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
     .hero-content {
-
-      max-width: 800px;
-
+      max-width: 860px;
       padding: 0 20px;
-
+      z-index: 2;
     }
-
-
 
     .hero h1 {
-
       font-family: 'Space Grotesk', sans-serif;
-
-      font-size: 4.5rem;
-
+      font-size: 4.8rem;
+      font-weight: 700;
       margin-bottom: 16px;
-
-      background: linear-gradient(90deg, #fff, var(--primary));
-
+      background: linear-gradient(90deg, #ffffff, var(--primary), #ffffff);
       -webkit-background-clip: text;
-
       -webkit-text-fill-color: transparent;
-
+      letter-spacing: -2px;
     }
-
-
 
     .hero p {
-
       font-size: 1.4rem;
-
-      margin-bottom: 40px;
-
+      margin-bottom: 42px;
       color: #bbb;
-
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-
 
     .cta-button {
-
       display: inline-block;
-
-      padding: 16px 40px;
-
-      background: linear-gradient(135deg, var(--primary), #00b8b8);
-
+      padding: 18px 48px;
+      background: linear-gradient(135deg, var(--primary), #00c4c4);
       color: #000;
-
-      font-weight: 600;
-
-      border-radius: 50px;
-
+      font-weight: 700;
+      border-radius: 9999px;
       text-decoration: none;
-
-      font-size: 1.1rem;
-
-      transition: all 0.3s ease;
-
-      box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
-
+      font-size: 1.15rem;
+      box-shadow: 0 12px 35px rgba(0, 245, 255, 0.35);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
-
 
     .cta-button:hover {
-
-      transform: translateY(-4px);
-
-      box-shadow: 0 15px 40px rgba(0, 245, 255, 0.5);
-
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 20px 45px rgba(0, 245, 255, 0.5);
     }
-
-
 
     section {
-
-      padding: 100px 5%;
-
-      max-width: 1200px;
-
+      padding: 110px 5%;
+      max-width: 1280px;
       margin: 0 auto;
-
     }
-
-
 
     h2 {
-
       font-family: 'Space Grotesk', sans-serif;
-
-      font-size: 2.8rem;
-
-      margin-bottom: 50px;
-
+      font-size: 3rem;
+      margin-bottom: 60px;
       text-align: center;
-
       position: relative;
-
+      font-weight: 600;
     }
-
-
 
     h2::after {
-
       content: '';
-
       display: block;
-
-      width: 80px;
-
-      height: 3px;
-
+      width: 90px;
+      height: 4px;
       background: linear-gradient(to right, var(--primary), var(--accent));
-
-      margin: 16px auto;
-
-      border-radius: 3px;
-
+      margin: 20px auto;
+      border-radius: 2px;
     }
-
-
 
     .games-grid {
-
       display: grid;
-
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-
-      gap: 30px;
-
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 32px;
     }
-
-
 
     .game-card {
-
       background: #111111;
-
-      border-radius: 16px;
-
+      border-radius: 20px;
       overflow: hidden;
-
       border: 1px solid #222;
-
-      transition: all 0.4s ease;
-
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
-
 
     .game-card:hover {
-
-      transform: translateY(-12px);
-
+      transform: translateY(-16px);
       border-color: var(--primary);
-
-      box-shadow: 0 25px 50px rgba(0, 245, 255, 0.15);
-
+      box-shadow: 0 30px 60px rgba(0, 245, 255, 0.18);
     }
-
-
 
     .game-image {
-
-      height: 220px;
-
+      height: 240px;
       background-size: cover;
-
       background-position: center;
-
       position: relative;
-
     }
-
-
 
     .game-image::after {
-
       content: '';
-
       position: absolute;
-
       inset: 0;
-
-      background: linear-gradient(transparent, rgba(10,10,10,0.9));
-
+      background: linear-gradient(transparent, rgba(10,10,10,0.95));
     }
-
-
 
     .game-info {
-
-      padding: 24px;
-
+      padding: 28px;
     }
-
-
 
     .game-title {
-
-      font-size: 1.5rem;
-
+      font-size: 1.55rem;
       font-weight: 600;
-
-      margin-bottom: 12px;
-
-      color: white;
-
+      margin-bottom: 8px;
     }
-
-
 
     .game-code {
-
       color: var(--primary);
-
       font-family: monospace;
-
-      font-size: 0.95rem;
-
-      margin-bottom: 12px;
-
+      margin-bottom: 14px;
     }
-
-
-
-    .stats-section {
-
-      background: #0f0f0f;
-
-    }
-
-
 
     .stats-grid {
-
       display: grid;
-
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
-      gap: 24px;
-
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
     }
-
-
 
     .stat-item {
-
       background: #151515;
-
-      padding: 32px 24px;
-
-      border-radius: 12px;
-
+      padding: 36px 26px;
+      border-radius: 16px;
       text-align: center;
-
       border: 1px solid #222;
-
+      transition: transform 0.3s ease;
     }
 
-
+    .stat-item:hover {
+      transform: scale(1.05);
+    }
 
     .stat-number {
-
-      font-size: 2.8rem;
-
-      font-weight: 600;
-
+      font-size: 3rem;
+      font-weight: 700;
       color: var(--primary);
-
-      margin-bottom: 8px;
-
+      margin-bottom: 10px;
     }
 
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
 
+    .team-card {
+      background: #111;
+      padding: 36px;
+      border-radius: 20px;
+      border: 1px solid #222;
+    }
 
     footer {
-
       background: #050505;
-
-      padding: 60px 5% 30px;
-
+      padding: 70px 5% 50px;
       border-top: 1px solid #222;
-
       text-align: center;
-
     }
-
-
-
-    .footer-content {
-
-      max-width: 1000px;
-
-      margin: 0 auto;
-
-    }
-
-
 
     .social-links {
-
-      margin: 30px 0;
-
+      margin: 32px 0;
       display: flex;
-
       justify-content: center;
-
-      gap: 20px;
-
+      gap: 32px;
+      font-size: 1.65rem;
     }
-
-
 
     .social-links a {
-
       color: #777;
-
-      font-size: 1.4rem;
-
-      transition: color 0.3s;
-
+      transition: all 0.3s ease;
     }
-
-
 
     .social-links a:hover {
-
       color: var(--primary);
-
+      transform: translateY(-3px);
     }
-
   </style>
-
 </head>
-
-
 
 <body>
 
-
-
   <header>
-
-    <a href="#" class="logo">VyrJion</a>
-
+    <a href="#" class="logo">
+      <img src="https://cdn.discordapp.com/attachments/915489521783676929/1515561299353014272/99db3f62-4334-42fc-956c-c3574e32928e-2.jpg?ex=6a2f73f3&is=6a2e2273&hm=1584c4d13ccb303db088ebeae0c519e9c2e6b4f8fb16572c35505c8f7be1bcb3&" alt="VyrJion Studios Logo">
+      <span>VyrJion Studios®</span>
+    </a>
     <nav>
-
       <a href="#games">Games</a>
-
       <a href="#updates">Updates</a>
-
       <a href="#teams">Teams</a>
-
       <a href="#credits">Credits</a>
-
-      <a href="#stats">Studio Stats</a>
-
+      <a href="#stats">Network Stats</a>
     </nav>
-
   </header>
 
-
-
   <section class="hero">
-
     <div class="hero-content">
-
-      <h1>VyrJion Studios</h1>
-
-      <p>Official Development Network Hub • Crafting next-generation Roblox experiences</p>
-
-      <a href="#games" class="cta-button">Explore Our Games</a>
-
+      <h1>VyrJion Network®</h1>
+      <p>Official Roblox Development Studio • Next-generation experiences powered by innovation</p>
+      <a href="#games" class="cta-button">Discover Our Universe</a>
     </div>
-
   </section>
-
-
 
   <section id="games">
-
-    <h2>Our Games</h2>
-
+    <h2>Featured Games</h2>
     
-
     <div class="games-grid">
-
       <div class="game-card">
-
         <div class="game-image" style="background-image: url('https://picsum.photos/id/1015/800/600')"></div>
-
         <div class="game-info">
-
           <div class="game-title">Dragon Ball :// Spectrum</div>
-
           <div class="game-code">DBS-001</div>
-
-          <p>A high-energy combat experience inspired by legendary Dragon Ball battles. Master transformations, perfect combos, and dominate arenas with friends.</p>
-
+          <p><strong>Visits:</strong> 1.2M+ <strong>Peak CCU:</strong> 4,820 <strong>Player Base:</strong> Rapidly Growing</p>
+          <p style="margin-top: 16px;">Intense arena combat inspired by legendary Dragon Ball battles. Master forms, combos, and dominate the arena.</p>
         </div>
-
       </div>
-
-
 
       <div class="game-card">
-
         <div class="game-image" style="background-image: url('https://picsum.photos/id/870/800/600')"></div>
-
         <div class="game-info">
-
           <div class="game-title">Aether :// Legacy</div>
-
           <div class="game-code">AEL-001</div>
-
-          <p>A vast fantasy world built for progression, deep lore, and meaningful exploration. Build your legacy across generations.</p>
-
+          <p><strong>Visits:</strong> 685K+ <strong>Peak CCU:</strong> 2,340 <strong>Player Base:</strong> Loyal Community</p>
+          <p style="margin-top: 16px;">Epic fantasy world focused on progression, rich lore, and endless exploration.</p>
         </div>
-
       </div>
-
     </div>
-
   </section>
 
-
-
-  <section id="updates" style="background: #111;">
-
-    <h2>Latest Updates</h2>
-
-    
-
-    <div style="max-width: 700px; margin: 0 auto;">
-
-      <div style="background: #1a1a1a; padding: 28px; border-radius: 16px; border: 1px solid #222;">
-
+  <section id="updates" style="background: #0f0f0f;">
+    <h2>Network Updates</h2>
+    <div style="max-width: 720px; margin: 0 auto;">
+      <div style="background: #1a1a1a; padding: 32px; border-radius: 20px; border: 1px solid #222;">
         <strong style="color: var(--primary);">v1.2 — June 2026</strong>
-
-        <p style="margin-top: 12px;">Studio Hub v2 launched with new visual identity and improved navigation. New game assets deployed for Dragon Ball :// Spectrum.</p>
-
+        <p style="margin-top: 14px;">VyrJion Network® Hub relaunched with premium branding, enhanced performance, and new visual systems. Fresh content deployed across active titles.</p>
       </div>
-
     </div>
-
   </section>
-
-
 
   <section id="teams">
-
-    <h2>Our Teams</h2>
-
+    <h2>Leadership &amp; Network Teams</h2>
     
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-
-      <div style="background: #111; padding: 28px; border-radius: 16px; border: 1px solid #222;">
-
-        <h3 style="color: var(--primary); margin-bottom: 16px;">Leadership</h3>
-
-        <p><strong>Owner:</strong> Voxual</p>
-
-        <p><strong>Studio Director:</strong> VyrJion Studios</p>
-
+    <div class="team-grid">
+      <div class="team-card">
+        <h3 style="color: var(--primary); margin-bottom: 22px;">Foundership</h3>
+        <p><strong>Chairman &amp; CEO:</strong> Jozef Archām</p>
+        <p><strong>Chairman &amp; CTO:</strong> Jan Peruz</p>
+        <p style="margin-top: 18px; color: #999;">Founders of VyrJion Studios® &amp; VyrJion Network®</p>
       </div>
 
-      
-
-      <div style="background: #111; padding: 28px; border-radius: 16px; border: 1px solid #222;">
-
-        <h3 style="color: var(--primary); margin-bottom: 16px;">Development</h3>
-
-        <p><strong>Core Developers:</strong> Systems &amp; Gameplay</p>
-
-        <p><strong>UI / Systems Division:</strong> Design Team</p>
-
+      <div class="team-card">
+        <h3 style="color: var(--primary); margin-bottom: 22px;">Project Management</h3>
+        <p><strong>Project Manager:</strong> Jozef Archām (Interim)</p>
+        <p style="margin-top: 14px; color: #999;">Strategic oversight of studio operations and development pipelines.</p>
       </div>
 
-      
-
-      <div style="background: #111; padding: 28px; border-radius: 16px; border: 1px solid #222;">
-
-        <h3 style="color: var(--primary); margin-bottom: 16px;">Support</h3>
-
+      <div class="team-card">
+        <h3 style="color: var(--primary); margin-bottom: 22px;">Core Divisions</h3>
+        <p><strong>Core Developers:</strong> Gameplay &amp; Systems</p>
+        <p><strong>UI / Experience Team:</strong> Design Division</p>
         <p><strong>QA Division:</strong> Testing &amp; Quality</p>
-
-        <p><strong>Community:</strong> Engagement Team</p>
-
       </div>
-
     </div>
-
   </section>
-
-
 
   <section id="credits">
-
     <h2>Credits</h2>
-
-    <div style="background: #111; padding: 40px; border-radius: 16px; max-width: 800px; margin: 0 auto; border: 1px solid #222;">
-
-      <p><strong>Creative Direction &amp; Concept:</strong> VyrJion Studios</p>
-
-      <p><strong>Game Development:</strong> Core Development Team</p>
-
-      <p><strong>Systems &amp; Infrastructure:</strong> Network Engineering</p>
-
-      <p><strong>Visual Identity:</strong> Design Division</p>
-
+    <div style="background: #111; padding: 44px; border-radius: 20px; max-width: 820px; margin: 0 auto; border: 1px solid #222;">
+      <p><strong>Creative Direction &amp; Vision:</strong> VyrJion Network® Leadership</p>
+      <p><strong>Game Development:</strong> Core Studio Team</p>
+      <p><strong>Infrastructure &amp; Systems:</strong> Network Engineering</p>
+      <p><strong>Branding &amp; Visual Identity:</strong> Design Division</p>
     </div>
-
   </section>
 
-
-
-  <section id="stats" class="stats-section">
-
-    <h2>Studio Stats</h2>
-
+  <section id="stats" style="background: #111;">
+    <h2>VyrJion Network® Stats</h2>
     
-
     <div class="stats-grid">
-
       <div class="stat-item">
-
         <div class="stat-number">2</div>
-
-        <p>Active Projects</p>
-
+        <p>Live Projects</p>
       </div>
-
       <div class="stat-item">
-
-        <div class="stat-number">12k+</div>
-
-        <p>Total Players</p>
-
+        <div class="stat-number">1.8M+</div>
+        <p>Total Visits</p>
       </div>
-
       <div class="stat-item">
-
+        <div class="stat-number">7.1K</div>
+        <p>Peak Concurrent Players</p>
+      </div>
+      <div class="stat-item">
         <div class="stat-number">98</div>
-
-        <p>Days Since Launch</p>
-
+        <p>Days Active</p>
       </div>
-
-      <div class="stat-item">
-
-        <div class="stat-number">∞</div>
-
-        <p>Potential</p>
-
-      </div>
-
     </div>
-
   </section>
-
-
 
   <footer>
-
-    <div class="footer-content">
-
-      <p style="font-size: 1.1rem; margin-bottom: 20px;">© 2026 VyrJion Studios — All Rights Reserved</p>
-
-      <p style="color: #555; font-size: 0.95rem;">A Roblox Development Network</p>
-
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <p style="font-size: 1.15rem; margin-bottom: 18px;">© 2026 VyrJion Studios® — VyrJion Network® — All Rights Reserved</p>
+      <p style="color: #555;">Premium Roblox Development Network</p>
       
-
       <div class="social-links">
-
-        <a href="#">Discord</a>
-
-        <a href="#">Roblox Group</a>
-
-        <a href="#">Twitter</a>
-
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+        <a href="https://youtube.com" target="_blank">YouTube</a>
+        <a href="https://x.com" target="_blank">X</a>
+        <a href="#" target="_blank">Discord</a>
+        <a href="#" target="_blank">Roblox Group</a>
       </div>
-
     </div>
-
   </footer>
 
-
-
   <script>
-
-    // Smooth scrolling for navigation
-
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
       anchor.addEventListener('click', function(e) {
-
         if (this.getAttribute('href') !== '#') {
-
           e.preventDefault();
-
-          const target = document.querySelector(this.getAttribute('href'));
-
-          if (target) {
-
-            target.scrollIntoView({
-
-              behavior: 'smooth'
-
-            });
-
-          }
-
+          document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
         }
-
       });
-
     });
-
-
-
-    // Add subtle scroll effect to header
-
-    window.addEventListener('scroll', () => {
-
-      const header = document.querySelector('header');
-
-      if (window.scrollY > 50) {
-
-        header.style.background = 'rgba(10,10,10,0.98)';
-
-      } else {
-
-        header.style.background = 'rgba(15,15,15,0.95)';
-
-      }
-
-    });
-
   </script>
-
 </body>
-
 </html>
