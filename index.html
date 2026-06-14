@@ -3,37 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VyrJion Studios® | The Elite Network</title>
+  <title>VyrJion Studios® | Elite Network</title>
+  
+  <!-- Social Media Embeds -->
+  <meta property="og:title" content="VyrJion Studios® | Elite Network">
+  <meta property="og:description" content="Next-Gen Development Architecture. Pushing the boundaries of Roblox innovation.">
+  <meta property="og:image" content="https://cdn.discordapp.com/attachments/915489521783676929/1515561299353014272/99db3f62-4334-42fc-956c-c3574e32928e-2.jpg?ex=6a2f73f3&is=6a2e2273&hm=1584c4d13ccb303db088ebeae0c519e9c2e6b4f8fb16572c35505c8f7be1bcb3&">
+  <meta property="og:url" content="https://project-wi8qd-8to6xg1ts-vyrjion-network-s-projects.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@300;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600&family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;500&display=swap');
 
     :root {
       --primary: #bc13fe; 
       --primary-glow: rgba(188, 19, 254, 0.4);
       --bg-black: #000000;
-      --bg-card: rgba(10, 10, 10, 0.8);
-      --border: rgba(188, 19, 254, 0.2);
+      --bg-card: rgba(8, 8, 8, 0.7);
+      --border: rgba(188, 19, 254, 0.15);
       --text-main: #ffffff;
       --text-dim: #999999;
       --grid: rgba(188, 19, 254, 0.03);
     }
 
-    * { 
-      margin: 0; padding: 0; box-sizing: border-box; 
-      cursor: none;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
 
     body {
       background: var(--bg-black);
       color: var(--text-main);
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
-      line-height: 1.5;
+      line-height: 1.6;
       font-weight: 300;
     }
 
-    /* Cyber Grid Overlay */
+    /* Cyber Grid */
     body::before {
       content: '';
       position: fixed;
@@ -41,155 +49,92 @@
       background-image: 
         linear-gradient(var(--grid) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 40px 40px;
+      background-size: 50px 50px;
       pointer-events: none;
       z-index: 100;
     }
 
     /* Custom Cursor */
-    #cursor {
-      width: 4px; height: 4px;
-      background: #fff;
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 10000;
-      box-shadow: 0 0 15px #fff;
-    }
-    #cursor-follower {
-      width: 30px; height: 30px;
-      border: 1px solid var(--primary);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.1s cubic-bezier(0.2, 1, 0.3, 1);
-    }
+    #cursor { width: 4px; height: 4px; background: #fff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; box-shadow: 0 0 15px #fff; }
+    #cursor-follower { width: 30px; height: 30px; border: 0.5px solid var(--primary); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s cubic-bezier(0.2, 1, 0.3, 1); }
 
-    /* Click Ripple Effect */
-    .ripple {
-      position: fixed;
-      border: 2px solid var(--primary);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      animation: ripple-anim 0.6s ease-out forwards;
-      z-index: 9998;
-    }
-    @keyframes ripple-anim {
-      0% { width: 0; height: 0; opacity: 1; }
-      100% { width: 100px; height: 100px; opacity: 0; }
-    }
+    /* Click Ripple */
+    .ripple { position: fixed; border: 2px solid var(--primary); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); animation: ripple-anim 0.6s ease-out forwards; z-index: 9998; }
+    @keyframes ripple-anim { 0% { width: 0; height: 0; opacity: 1; } 100% { width: 100px; height: 100px; opacity: 0; } }
 
     /* Floating Social Sidebar */
-    .social-sidebar {
-      position: fixed;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 1001;
-    }
-    .social-sidebar a {
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(15, 15, 15, 0.7);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
-      transition: 0.3s cubic-bezier(0.2, 1, 0.3, 1);
-    }
-    .social-sidebar a:hover {
-      border-color: var(--primary);
-      transform: translateX(-8px);
-      box-shadow: 0 0 20px var(--primary-glow);
-    }
+    .social-sidebar { position: fixed; right: 30px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 15px; z-index: 1001; }
+    .social-sidebar a { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; background: rgba(15, 15, 15, 0.7); border: 1px solid var(--border); border-radius: 12px; backdrop-filter: blur(10px); transition: 0.3s cubic-bezier(0.2, 1, 0.3, 1); }
+    .social-sidebar a:hover { border-color: var(--primary); transform: translateX(-8px); box-shadow: 0 0 20px var(--primary-glow); }
     .social-sidebar a img { width: 22px; }
 
     /* Header */
-    header {
-      position: fixed;
-      top: 0; width: 100%;
-      padding: 20px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
-    }
-    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: #fff; }
+    header { position: fixed; top: 0; width: 100%; padding: 20px 6%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 20px; color: #fff; letter-spacing: 2px; }
     .logo img { height: 30px; filter: drop-shadow(0 0 10px var(--primary-glow)); }
     nav { display: flex; gap: 30px; }
     nav a { text-decoration: none; color: var(--text-dim); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
     nav a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
     /* Hero */
-    .hero {
-      height: 85vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
+    .hero { height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
     #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.6; }
     .hero-content { z-index: 2; max-width: 900px; pointer-events: none; }
-    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 6rem; font-weight: 700; line-height: 1; margin-bottom: 20px; letter-spacing: -4px; background: linear-gradient(to bottom, #fff 40%, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero p { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 10px; color: var(--primary); font-weight: 500; }
+    .hero h1 { font-family: 'Orbitron', sans-serif; font-size: 5rem; font-weight: 700; line-height: 1; margin-bottom: 20px; letter-spacing: 10px; background: linear-gradient(to bottom, #fff 40%, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0; transform: translateY(30px); }
+    .hero p { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 12px; color: var(--primary); font-weight: 500; opacity: 0; transform: translateY(20px); }
 
     /* Sections */
-    section { padding: 100px 6%; max-width: 1300px; margin: 0 auto; }
-    .section-tag { font-family: 'JetBrains Mono', monospace; color: var(--primary); font-size: 9px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; display: block; }
-    h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2.8rem; font-weight: 600; margin-bottom: 50px; letter-spacing: -1.5px; }
+    section { padding: 100px 6%; max-width: 1300px; margin: 0 auto; position: relative; z-index: 3; }
+    .section-tag { font-family: 'JetBrains Mono', monospace; color: var(--primary); font-size: 9px; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+    h2 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; font-weight: 400; margin-bottom: 50px; letter-spacing: 4px; text-transform: uppercase; }
 
-    /* Game Cards - Refined & Compact */
-    .game-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
+    /* Stats Grid */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 60px; }
+    .stat-card { background: var(--bg-card); border: 1px solid var(--border); padding: 35px; border-radius: 20px; text-align: center; backdrop-filter: blur(15px); transition: 0.4s; }
+    .stat-card:hover { border-color: var(--primary); transform: translateY(-8px); }
+    .stat-num { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--primary); margin-bottom: 8px; }
+    .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; }
+
+    /* Game Cards - Compact & Refined */
+    .game-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; }
     .game-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; text-decoration: none; color: inherit; transition: 0.4s; backdrop-filter: blur(20px); }
-    .game-card:hover { border-color: var(--primary); transform: translateY(-8px); box-shadow: 0 10px 30px rgba(188, 19, 254, 0.1); }
-    .game-img { height: 260px; background-size: cover; background-position: center; filter: brightness(0.7); transition: 0.6s; }
+    .game-card:hover { border-color: var(--primary); transform: translateY(-8px); }
+    .game-img { height: 240px; background-size: cover; background-position: center; filter: brightness(0.7); transition: 0.6s; }
     .game-card:hover .game-img { filter: brightness(1); transform: scale(1.05); }
     .game-info { padding: 30px; border-top: 1px solid var(--border); }
-    .game-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 600; margin-bottom: 10px; }
-    .game-stats { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--primary); letter-spacing: 2px; }
-    .game-bio { font-size: 14px; color: var(--text-dim); margin-top: 15px; line-height: 1.6; }
+    .game-title { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; margin-bottom: 10px; letter-spacing: 1px; }
+    .game-stats { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--primary); letter-spacing: 2px; margin-bottom: 12px; }
+    .game-bio { font-size: 13px; color: var(--text-dim); font-weight: 300; }
 
     /* Codes Terminal */
-    .codes-container { background: rgba(188, 19, 254, 0.03); border: 1px solid var(--border); border-radius: 20px; padding: 50px; text-align: center; backdrop-filter: blur(10px); }
-    .code-status { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--primary); letter-spacing: 3px; }
+    .codes-container { background: rgba(188, 19, 254, 0.03); border: 1px solid var(--border); border-radius: 20px; padding: 50px; text-align: center; }
+    .code-status { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--primary); letter-spacing: 3px; }
 
     /* Departments */
-    .dept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-    .dept-card { background: var(--bg-card); border: 1px solid var(--border); padding: 40px; border-radius: 20px; backdrop-filter: blur(20px); }
-    .dept-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; color: #fff; margin-bottom: 12px; font-weight: 600; }
-    .dept-manager { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--primary); margin-bottom: 25px; letter-spacing: 2px; }
-    .team-item { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; transition: 0.3s; }
+    .dept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+    .dept-card { background: var(--bg-card); border: 1px solid var(--border); padding: 35px; border-radius: 20px; backdrop-filter: blur(20px); }
+    .dept-name { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #fff; margin-bottom: 12px; letter-spacing: 1px; }
+    .dept-manager { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--primary); margin-bottom: 25px; letter-spacing: 2px; }
+    .team-item { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; transition: 0.3s; }
     .team-item:hover { color: #fff; transform: translateX(5px); }
-    .team-item::before { content: ''; width: 5px; height: 5px; background: var(--primary); border-radius: 50%; }
+    .team-item::before { content: ''; width: 4px; height: 4px; background: var(--primary); border-radius: 50%; }
 
     /* Hierarchy Chart */
     .coc-container { display: flex; flex-direction: column; align-items: center; gap: 60px; }
-    .coc-box { background: var(--bg-card); border: 1px solid var(--border); padding: 30px 50px; border-radius: 18px; text-align: center; width: 360px; position: relative; }
+    .coc-box { background: var(--bg-card); border: 1px solid var(--border); padding: 30px 50px; border-radius: 18px; text-align: center; width: 340px; position: relative; }
     .coc-box::before { content: ''; position: absolute; top: -60px; left: 50%; width: 1px; height: 60px; background: linear-gradient(to bottom, var(--primary), transparent); display: none; }
     .coc-level:not(:first-child) .coc-box::before { display: block; }
     .coc-icon { height: 40px; margin-bottom: 15px; filter: drop-shadow(0 0 10px var(--primary-glow)); }
-    .coc-role { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--primary); letter-spacing: 3px; margin-bottom: 12px; display: block; }
-    .coc-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; }
+    .coc-role { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--primary); letter-spacing: 3px; margin-bottom: 12px; display: block; }
+    .coc-name { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; letter-spacing: 1px; }
 
     /* Footer */
     footer { padding: 100px 6%; border-top: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 40px; text-align: center; }
-    .footer-credit { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: 4px; color: #fff; }
+    .footer-credit { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
     .footer-bottom { width: 100%; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-dim); }
 
     @media (max-width: 1024px) {
-      .hero h1 { font-size: 4rem; }
+      .hero h1 { font-size: 3.5rem; letter-spacing: 5px; }
       .social-sidebar { display: none; }
       .game-grid { grid-template-columns: 1fr; }
       .coc-box { width: 90vw; }
@@ -223,14 +168,33 @@
 
   <section class="hero">
     <canvas id="hero-canvas"></canvas>
-    <div class="hero-content" data-aos="zoom-out">
-      <p>// PROTOCOL: INNOVATION</p>
-      <h1>VYRJION</h1>
+    <div class="hero-content">
+      <p id="hero-p">// PROTOCOL: INNOVATION</p>
+      <h1 id="hero-h1">VYRJION</h1>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-tag">Network Metrics // 01</span>
+    <h2>Global Impact</h2>
+    <div class="stats-grid">
+      <div class="stat-card" data-aos="fade-up">
+        <div class="stat-num">3.6M+</div>
+        <div class="stat-label">Total Sessions</div>
+      </div>
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-num" id="ccu-stat">0</div>
+        <div class="stat-label">Active Users</div>
+      </div>
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">System Uptime</div>
+      </div>
     </div>
   </section>
 
   <section id="games">
-    <span class="section-tag">Portfolio // 01</span>
+    <span class="section-tag">Portfolio // 02</span>
     <h2>Active Projects</h2>
     <div class="game-grid">
       <a href="https://www.roblox.com/games/6345516181/Dragon-Ball-Spectrum-Remastered" target="_blank" class="game-card" data-aos="fade-up">
@@ -238,14 +202,14 @@
         <div class="game-info">
           <div class="game-stats">VISITS: 3.6M+ | CCU: <span id="dbs-ccu">0</span></div>
           <div class="game-title">Dragon Ball :// Spectrum</div>
-          <p id="dbs-bio" class="game-bio">Connecting to the VyrJion network logs...</p>
+          <p id="dbs-bio" class="game-bio">Syncing with VyrJion network protocols...</p>
         </div>
       </a>
     </div>
   </section>
 
   <section id="codes">
-    <span class="section-tag">Rewards // 02</span>
+    <span class="section-tag">Rewards // 03</span>
     <h2>Active Gamecodes</h2>
     <div class="codes-container" data-aos="fade-up">
       <div class="code-status">// NO_ACTIVE_CODES_FOUND: AWAITING_ENCRYPTION</div>
@@ -253,8 +217,8 @@
   </section>
 
   <section id="departments">
-    <span class="section-tag">Structure // 03</span>
-    <h2>Operational Infrastructure</h2>
+    <span class="section-tag">Infrastructure // 04</span>
+    <h2>Operational Units</h2>
     <div class="dept-grid">
       <div class="dept-card" data-aos="fade-up">
         <div class="dept-name">Department of Social Affiliation</div>
@@ -277,16 +241,16 @@
   </section>
 
   <section id="leadership">
-    <span class="section-tag">Protocol // 04</span>
+    <span class="section-tag">Protocol // 05</span>
     <h2>Chain of Command</h2>
     <div class="coc-container">
-      <div class="coc-level" data-aos="fade-down" style="display: flex; gap: 30px;">
-        <div class="coc-box">
+      <div class="coc-level" style="display: flex; gap: 30px;">
+        <div class="coc-box" data-aos="fade-down">
           <img src="https://media.discordapp.net/attachments/915489521783676929/1515739021408600174/CHAIRMAN.png?ex=6a301977&is=6a2ec7f7&hm=0ef2929f38fb65c0d253590e3dc1dea4ad53952dd14d4e6974c874c5e8a3539c&=&format=webp&quality=lossless&width=419&height=419" alt="Chairman" class="coc-icon">
           <span class="coc-role">FOUNDERSHIP</span>
           <div class="coc-name">Jozef Archām</div>
         </div>
-        <div class="coc-box">
+        <div class="coc-box" data-aos="fade-down">
           <img src="https://media.discordapp.net/attachments/915489521783676929/1515739021408600174/CHAIRMAN.png?ex=6a301977&is=6a2ec7f7&hm=0ef2929f38fb65c0d253590e3dc1dea4ad53952dd14d4e6974c874c5e8a3539c&=&format=webp&quality=lossless&width=419&height=419" alt="Chairman" class="coc-icon">
           <span class="coc-role">FOUNDERSHIP</span>
           <div class="coc-name">Jan Peruz</div>
@@ -313,13 +277,17 @@
     <div class="footer-credit" data-aos="zoom-in">DESIGN_VISION: JOZEF ARCHĀM</div>
     <div class="footer-bottom">
       <p>© 2026 VYRJION_NETWORK_OPERATIONS</p>
-      <p>ALL SYSTEMS OPERATIONAL</p>
+      <p>ELITE_PROTOCOL_ACTIVE</p>
     </div>
   </footer>
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
+
+    // GSAP Entry
+    gsap.to('#hero-h1', { opacity: 1, y: 0, duration: 1.5, ease: 'power4.out', delay: 0.5 });
+    gsap.to('#hero-p', { opacity: 1, y: 0, duration: 1.2, ease: 'power4.out', delay: 0.8 });
 
     // Custom Cursor
     const cursor = document.getElementById('cursor');
@@ -331,7 +299,7 @@
       follower.style.top = (e.clientY - 15) + 'px';
     });
 
-    // Click Ripple Restored
+    // Click Ripple
     document.addEventListener('mousedown', (e) => {
       const ripple = document.createElement('div');
       ripple.className = 'ripple';
@@ -341,7 +309,7 @@
       setTimeout(() => ripple.remove(), 600);
     });
 
-    // Premium Banner Animation Restored & Modernized
+    // High-Intensity Banner
     const canvas = document.getElementById('hero-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -371,25 +339,19 @@
         this.density = (Math.random() * 30) + 1;
       }
       update() {
-        // Natural movement
         this.x += this.vx; this.y += this.vy;
         if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
         if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
 
-        // Mouse interaction
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
         let distance = Math.sqrt(dx*dx + dy*dy);
-        let forceDirectionX = dx / distance;
-        let forceDirectionY = dy / distance;
-        let maxDistance = mouse.radius;
-        let force = (maxDistance - distance) / maxDistance;
-        let directionX = forceDirectionX * force * this.density;
-        let directionY = forceDirectionY * force * this.density;
-
         if (distance < mouse.radius) {
-          this.x -= directionX;
-          this.y -= directionY;
+          let forceDirectionX = dx / distance;
+          let forceDirectionY = dy / distance;
+          let force = (mouse.radius - distance) / mouse.radius;
+          this.x -= forceDirectionX * force * this.density * 0.5;
+          this.y -= forceDirectionY * force * this.density * 0.5;
         }
       }
     }
@@ -424,6 +386,7 @@
         if(data.data && data.data[0]) {
           const game = data.data[0];
           document.getElementById('dbs-ccu').innerText = game.playing.toLocaleString();
+          document.getElementById('ccu-stat').innerText = game.playing.toLocaleString();
         }
         const infoRes = await fetch(`https://games.roproxy.com/v1/games/multiget-main?universeIds=${universeId}`);
         const infoData = await infoRes.json();
