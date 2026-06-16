@@ -1,400 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VyrJion Studios® | Elite Network</title>
-  
-  <!-- Social Media Embeds -->
-  <meta property="og:title" content="VyrJion Studios® | Elite Network">
-  <meta property="og:description" content="Next-Gen Development Architecture. Pushing the boundaries of Roblox innovation.">
-  <meta property="og:image" content="https://cdn.discordapp.com/attachments/915489521783676929/1515561299353014272/99db3f62-4334-42fc-956c-c3574e32928e-2.jpg?ex=6a2f73f3&is=6a2e2273&hm=1584c4d13ccb303db088ebeae0c519e9c2e6b4f8fb16572c35505c8f7be1bcb3&">
-  <meta property="og:url" content="https://project-wi8qd-8to6xg1ts-vyrjion-network-s-projects.vercel.app/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VyrJion Studios® | Official Network Hub</title>
+    
+    <!-- Social Media Embeds -->
+    <meta property="og:title" content="VyrJion Studios® | Official Network Hub">
+    <meta property="og:description" content="A collaborative development network focused on building high-quality, innovation-driven games.">
+    <meta property="og:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663670662761/TlzGemvlkZbWspwU.png">
 
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600&family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;500&display=swap');
+    <!-- Fonts & Libraries -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;500&display=swap');
 
-    :root {
-      --primary: #bc13fe; 
-      --primary-glow: rgba(188, 19, 254, 0.4);
-      --bg-black: #000000;
-      --bg-card: rgba(8, 8, 8, 0.7);
-      --border: rgba(188, 19, 254, 0.15);
-      --text-main: #ffffff;
-      --text-dim: #999999;
-      --grid: rgba(188, 19, 254, 0.03);
-    }
+        :root {
+            --primary: #bc13fe; /* Neon Purple */
+            --primary-glow: rgba(188, 19, 254, 0.4);
+            --bg: #000000;
+            --bg-card: rgba(10, 10, 10, 0.8);
+            --text: #ffffff;
+            --text-dim: #999999;
+            --border: rgba(188, 19, 254, 0.15);
+            --success: #00ff88;
+        }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            overflow-x: hidden;
+            font-weight: 300;
+            line-height: 1.6;
+        }
 
-    body {
-      background: var(--bg-black);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      overflow-x: hidden;
-      line-height: 1.6;
-      font-weight: 300;
-    }
+        /* High-Intensity Banner */
+        #hero-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.6; pointer-events: none; }
 
-    /* Cyber Grid */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-image: 
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 50px 50px;
-      pointer-events: none;
-      z-index: 100;
-    }
+        /* Custom Cursor */
+        #cursor { width: 4px; height: 4px; background: #fff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; box-shadow: 0 0 15px #fff; }
+        #cursor-follower { width: 30px; height: 30px; border: 0.5px solid var(--primary); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s cubic-bezier(0.2, 1, 0.3, 1); }
 
-    /* Custom Cursor */
-    #cursor { width: 4px; height: 4px; background: #fff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; box-shadow: 0 0 15px #fff; }
-    #cursor-follower { width: 30px; height: 30px; border: 0.5px solid var(--primary); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s cubic-bezier(0.2, 1, 0.3, 1); }
+        /* Click Ripple */
+        .ripple { position: fixed; border: 2px solid var(--primary); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); animation: ripple-anim 0.6s ease-out forwards; z-index: 9998; }
+        @keyframes ripple-anim { 0% { width: 0; height: 0; opacity: 1; } 100% { width: 100px; height: 100px; opacity: 0; } }
 
-    /* Click Ripple */
-    .ripple { position: fixed; border: 2px solid var(--primary); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); animation: ripple-anim 0.6s ease-out forwards; z-index: 9998; }
-    @keyframes ripple-anim { 0% { width: 0; height: 0; opacity: 1; } 100% { width: 100px; height: 100px; opacity: 0; } }
+        /* Navigation */
+        header { position: fixed; top: 0; width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo img { height: 35px; filter: drop-shadow(0 0 10px var(--primary-glow)); }
+        nav { display: flex; gap: 40px; }
+        nav a { text-decoration: none; color: var(--text-dim); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; transition: 0.3s; }
+        nav a:hover { color: var(--primary); }
 
-    /* Floating Social Sidebar */
-    .social-sidebar { position: fixed; right: 30px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 15px; z-index: 1001; }
-    .social-sidebar a { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; background: rgba(15, 15, 15, 0.7); border: 1px solid var(--border); border-radius: 12px; backdrop-filter: blur(10px); transition: 0.3s cubic-bezier(0.2, 1, 0.3, 1); }
-    .social-sidebar a:hover { border-color: var(--primary); transform: translateX(-8px); box-shadow: 0 0 20px var(--primary-glow); }
-    .social-sidebar a img { width: 22px; }
+        /* Social Sidebar */
+        .social-sidebar { position: fixed; right: 40px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 20px; z-index: 1001; }
+        .social-sidebar a { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; backdrop-filter: blur(10px); transition: 0.3s; }
+        .social-sidebar a:hover { border-color: var(--primary); transform: translateX(-5px); box-shadow: 0 0 20px var(--primary-glow); }
+        .social-sidebar a img { width: 20px; }
 
-    /* Header */
-    header { position: fixed; top: 0; width: 100%; padding: 20px 6%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
-    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 20px; color: #fff; letter-spacing: 2px; }
-    .logo img { height: 30px; filter: drop-shadow(0 0 10px var(--primary-glow)); }
-    nav { display: flex; gap: 30px; }
-    nav a { text-decoration: none; color: var(--text-dim); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-    nav a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+        /* Main Content */
+        section { padding: 120px 10%; max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; }
+        .section-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--primary); letter-spacing: 6px; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 6rem; font-weight: 700; line-height: 1; margin-bottom: 40px; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 60px; }
 
-    /* Hero */
-    .hero { height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
-    #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.6; }
-    .hero-content { z-index: 2; max-width: 900px; pointer-events: none; }
-    .hero h1 { font-family: 'Orbitron', sans-serif; font-size: 5rem; font-weight: 700; line-height: 1; margin-bottom: 20px; letter-spacing: 10px; background: linear-gradient(to bottom, #fff 40%, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0; transform: translateY(30px); }
-    .hero p { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 12px; color: var(--primary); font-weight: 500; opacity: 0; transform: translateY(20px); }
+        /* Metrics Section */
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 100px; }
+        .metric-card { background: var(--bg-card); border: 1px solid var(--border); padding: 40px; border-radius: 20px; text-align: center; transition: 0.4s; }
+        .metric-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .metric-val { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; font-weight: 700; }
+        .metric-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
 
-    /* Sections */
-    section { padding: 100px 6%; max-width: 1300px; margin: 0 auto; position: relative; z-index: 3; }
-    .section-tag { font-family: 'JetBrains Mono', monospace; color: var(--primary); font-size: 9px; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 15px; display: block; }
-    h2 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; font-weight: 400; margin-bottom: 50px; letter-spacing: 4px; text-transform: uppercase; }
+        /* About Us Section */
+        .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
+        .about-content p { font-size: 18px; color: var(--text-dim); margin-bottom: 30px; font-weight: 200; }
 
-    /* Stats Grid */
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 60px; }
-    .stat-card { background: var(--bg-card); border: 1px solid var(--border); padding: 35px; border-radius: 20px; text-align: center; backdrop-filter: blur(15px); transition: 0.4s; }
-    .stat-card:hover { border-color: var(--primary); transform: translateY(-8px); }
-    .stat-num { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--primary); margin-bottom: 8px; }
-    .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; }
+        /* Projects Section */
+        .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; margin-bottom: 40px; transition: 0.4s; }
+        .project-card:hover { border-color: var(--primary); transform: translateY(-10px); }
+        .project-visual { height: 450px; background-size: cover; background-position: center; filter: brightness(0.8); transition: 0.6s; position: relative; }
+        .project-card:hover .project-visual { filter: brightness(1); }
+        
+        .project-info { padding: 50px; }
+        .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
+        .project-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; }
+        .project-status { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--primary); border: 1px solid var(--primary); padding: 5px 15px; border-radius: 20px; }
+        .project-stats { display: flex; gap: 40px; margin-bottom: 30px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); align-items: center; }
+        .project-stats span b { color: var(--primary); }
 
-    /* Game Cards - Compact & Refined */
-    .game-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; }
-    .game-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; text-decoration: none; color: inherit; transition: 0.4s; backdrop-filter: blur(20px); }
-    .game-card:hover { border-color: var(--primary); transform: translateY(-8px); }
-    .game-img { height: 240px; background-size: cover; background-position: center; filter: brightness(0.7); transition: 0.6s; }
-    .game-card:hover .game-img { filter: brightness(1); transform: scale(1.05); }
-    .game-info { padding: 30px; border-top: 1px solid var(--border); }
-    .game-title { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; margin-bottom: 10px; letter-spacing: 1px; }
-    .game-stats { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--primary); letter-spacing: 2px; margin-bottom: 12px; }
-    .game-bio { font-size: 13px; color: var(--text-dim); font-weight: 300; }
+        /* Active Codes HUD */
+        .codes-hud { background: rgba(0,0,0,0.4); padding: 20px 30px; border-radius: 15px; border: 1px solid rgba(0, 255, 136, 0.2); margin-bottom: 30px; display: inline-block; }
+        .codes-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--success); letter-spacing: 3px; margin-bottom: 15px; display: block; }
+        .code-item { display: flex; align-items: center; gap: 15px; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-bottom: 8px; color: #fff; }
+        .tick-icon { width: 12px; height: 12px; border: 1.5px solid var(--success); border-radius: 50%; position: relative; animation: tick-pulse 2s infinite; }
+        .tick-icon::after { content: ''; position: absolute; top: 2px; left: 4px; width: 3px; height: 6px; border-right: 1.5px solid var(--success); border-bottom: 1.5px solid var(--success); transform: rotate(45deg); }
+        @keyframes tick-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); } 70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); } }
 
-    /* Codes Terminal */
-    .codes-container { background: rgba(188, 19, 254, 0.03); border: 1px solid var(--border); border-radius: 20px; padding: 50px; text-align: center; }
-    .code-status { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--primary); letter-spacing: 3px; }
+        /* Hierarchy Section */
+        .hierarchy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .h-card { border-top: 1px solid var(--border); padding-top: 30px; }
+        .h-label { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--primary); margin-bottom: 25px; font-style: italic; }
+        .h-role { margin-bottom: 20px; }
+        .h-role h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 5px; }
+        .h-role p { font-size: 13px; color: var(--text-dim); }
 
-    /* Departments */
-    .dept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-    .dept-card { background: var(--bg-card); border: 1px solid var(--border); padding: 35px; border-radius: 20px; backdrop-filter: blur(20px); }
-    .dept-name { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #fff; margin-bottom: 12px; letter-spacing: 1px; }
-    .dept-manager { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--primary); margin-bottom: 25px; letter-spacing: 2px; }
-    .team-item { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; transition: 0.3s; }
-    .team-item:hover { color: #fff; transform: translateX(5px); }
-    .team-item::before { content: ''; width: 4px; height: 4px; background: var(--primary); border-radius: 50%; }
+        /* Career Section */
+        .career-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .job-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 30px; border-radius: 15px; transition: 0.3s; }
+        .job-card:hover { background: rgba(188, 19, 254, 0.05); border-color: var(--primary); }
+        .job-card h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 10px; }
+        .job-card .availability { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--primary); }
 
-    /* Hierarchy Chart */
-    .coc-container { display: flex; flex-direction: column; align-items: center; gap: 60px; }
-    .coc-box { background: var(--bg-card); border: 1px solid var(--border); padding: 30px 50px; border-radius: 18px; text-align: center; width: 340px; position: relative; }
-    .coc-box::before { content: ''; position: absolute; top: -60px; left: 50%; width: 1px; height: 60px; background: linear-gradient(to bottom, var(--primary), transparent); display: none; }
-    .coc-level:not(:first-child) .coc-box::before { display: block; }
-    .coc-icon { height: 40px; margin-bottom: 15px; filter: drop-shadow(0 0 10px var(--primary-glow)); }
-    .coc-role { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--primary); letter-spacing: 3px; margin-bottom: 12px; display: block; }
-    .coc-name { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; letter-spacing: 1px; }
+        /* Community Section */
+        .community-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .community-card { background: var(--bg-card); border: 1px solid var(--border); padding: 40px; border-radius: 20px; text-align: center; }
+        .community-card h4 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 20px; }
+        .community-btn { display: inline-block; padding: 12px 30px; background: var(--primary); color: #fff; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; border-radius: 5px; transition: 0.3s; }
+        .community-btn:hover { box-shadow: 0 0 20px var(--primary-glow); transform: translateY(-2px); }
 
-    /* Footer */
-    footer { padding: 100px 6%; border-top: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 40px; text-align: center; }
-    .footer-credit { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
-    .footer-bottom { width: 100%; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-dim); }
+        /* Terms of Service */
+        .tos-container { background: var(--bg-card); padding: 60px; border-radius: 24px; border: 1px solid var(--border); }
+        .tos-content { font-size: 14px; color: var(--text-dim); height: 400px; overflow-y: auto; padding-right: 20px; }
+        .tos-content h3 { color: #fff; margin: 30px 0 15px; font-family: 'Playfair Display', serif; }
 
-    @media (max-width: 1024px) {
-      .hero h1 { font-size: 3.5rem; letter-spacing: 5px; }
-      .social-sidebar { display: none; }
-      .game-grid { grid-template-columns: 1fr; }
-      .coc-box { width: 90vw; }
-    }
-  </style>
+        /* Custom Scrollbar for TOS */
+        .tos-content::-webkit-scrollbar { width: 4px; }
+        .tos-content::-webkit-scrollbar-track { background: transparent; }
+        .tos-content::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        /* Footer */
+        footer { padding: 100px 8% 50px; border-top: 1px solid var(--border); text-align: center; position: relative; z-index: 10; }
+        .footer-credit { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 20px; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; font-size: 10px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
+
+        @media (max-width: 1024px) {
+            h1 { font-size: 3.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .social-sidebar { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-  <div id="cursor"></div>
-  <div id="cursor-follower"></div>
-
-  <div class="social-sidebar">
-    <a href="https://www.roblox.com/communities/10073825/VyrJion-Studios#!/about" target="_blank"><img src="https://cdn.simpleicons.org/roblox" alt="Roblox"></a>
-    <a href="https://discord.gg/z4bKHmMt8M" target="_blank"><img src="https://cdn.simpleicons.org/discord" alt="Discord"></a>
-    <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/patreon/F96854" alt="Patreon"></a>
-    <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/youtube" alt="YouTube"></a>
-    <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/instagram" alt="Instagram"></a>
-  </div>
-
-  <header>
-    <a href="#" class="logo">
-      <img src="https://cdn.discordapp.com/attachments/915489521783676929/1515561299353014272/99db3f62-4334-42fc-956c-c3574e32928e-2.jpg?ex=6a2f73f3&is=6a2e2273&hm=1584c4d13ccb303db088ebeae0c519e9c2e6b4f8fb16572c35505c8f7be1bcb3&" alt="VyrJion">
-      <span>VYRJION NETWORK</span>
-    </a>
-    <nav>
-      <a href="#games">Projects</a>
-      <a href="#codes">Terminal</a>
-      <a href="#leadership">Hierarchy</a>
-    </nav>
-  </header>
-
-  <section class="hero">
     <canvas id="hero-canvas"></canvas>
-    <div class="hero-content">
-      <p id="hero-p">// PROTOCOL: INNOVATION</p>
-      <h1 id="hero-h1">VYRJION</h1>
-    </div>
-  </section>
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
 
-  <section>
-    <span class="section-tag">Network Metrics // 01</span>
-    <h2>Global Impact</h2>
-    <div class="stats-grid">
-      <div class="stat-card" data-aos="fade-up">
-        <div class="stat-num">3.6M+</div>
-        <div class="stat-label">Total Sessions</div>
-      </div>
-      <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="stat-num" id="ccu-stat">0</div>
-        <div class="stat-label">Active Users</div>
-      </div>
-      <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">System Uptime</div>
-      </div>
-    </div>
-  </section>
+    <header>
+        <a href="#" class="logo">
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663670662761/TlzGemvlkZbWspwU.png" alt="VYRJION">
+        </a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#community">Community</a>
+            <a href="#careers">Careers</a>
+        </nav>
+    </header>
 
-  <section id="games">
-    <span class="section-tag">Portfolio // 02</span>
-    <h2>Active Projects</h2>
-    <div class="game-grid">
-      <a href="https://www.roblox.com/games/6345516181/Dragon-Ball-Spectrum-Remastered" target="_blank" class="game-card" data-aos="fade-up">
-        <div class="game-img" style="background-image: url('https://media.discordapp.net/attachments/915489521783676929/1515565580596285470/aaaafafafaa.png?ex=6a2f77f0&is=6a2e2670&hm=7a5877127887ce4996999e746cc99d7d0abe80af894c3f7ddfd975582a019702&=&format=webp&quality=lossless&width=1139&height=643')"></div>
-        <div class="game-info">
-          <div class="game-stats">VISITS: 3.6M+ | CCU: <span id="dbs-ccu">0</span></div>
-          <div class="game-title">Dragon Ball :// Spectrum</div>
-          <p id="dbs-bio" class="game-bio">Syncing with VyrJion network protocols...</p>
+    <div class="social-sidebar">
+        <a href="https://www.roblox.com/communities/10073825/VyrJion-Studios#!/about" target="_blank"><img src="https://cdn.simpleicons.org/roblox" alt="Roblox"></a>
+        <a href="https://discord.gg/z4bKHmMt8M" target="_blank"><img src="https://cdn.simpleicons.org/discord" alt="Discord"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/patreon/F96854" alt="Patreon"></a>
+        <a href="#" target="_blank"><img src="https://cdn.simpleicons.org/youtube" alt="YouTube"></a>
+    </div>
+
+    <main>
+        <!-- Global Impact Metrics -->
+        <section id="impact">
+            <span class="section-label" data-aos="fade-right">NETWORK_DOMINANCE</span>
+            <h2>Global Impact</h2>
+            <div class="metrics-grid">
+                <div class="metric-card" data-aos="fade-up">
+                    <div class="metric-val">3.6M+</div>
+                    <div class="metric-label">Total Contributions</div>
+                </div>
+                <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="metric-val">120+</div>
+                    <div class="metric-label">Peak Concurrent Users</div>
+                </div>
+                <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="metric-val">24/7</div>
+                    <div class="metric-label">System Uptime</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us -->
+        <section id="about">
+            <span class="section-label" data-aos="fade-right">STUDIO_IDENTITY</span>
+            <h1>About Us</h1>
+            <div class="about-grid">
+                <div class="about-content" data-aos="fade-up">
+                    <p>VyrJion Studios® is a collaborative development network focused on building high-quality, innovation-driven games rooted in passion projects and long-term creative vision.</p>
+                    <p>The studio originally began as Spectrum Studios, a solo development project centered around its primary title, Dragon Ball Spectrum. On September 2nd, 2025, the studio rebranded into VyrJion Studios® / Network, establishing a co-chairman system between Jozef Archām and the founder, Jan.</p>
+                    <p>Today, our focus has expanded beyond its original project. Our mission is now centered on producing high-quality games with strong innovation, structure, and creative consistency across all projects.</p>
+                </div>
+                <div class="about-visual" data-aos="fade-left">
+                    <img src="https://cdn.discordapp.com/attachments/915489521783676929/1515561299353014272/99db3f62-4334-42fc-956c-c3574e32928e-2.jpg?ex=6a2f73f3&is=6a2e2273&hm=1584c4d13ccb303db088ebeae0c519e9c2e6b4f8fb16572c35505c8f7be1bcb3&" alt="VyrJion" style="width: 100%; filter: grayscale(1) brightness(0.8);">
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Projects -->
+        <section id="projects">
+            <span class="section-label">CURRENT_OPERATIONS</span>
+            <h2>Active Projects</h2>
+            
+            <!-- Spectrum Remastered -->
+            <div class="project-card" data-aos="fade-up">
+                <div class="project-visual" style="background-image: url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663670662761/hSlZVBzSJUYMfKVh.png')"></div>
+                <div class="project-info">
+                    <div class="project-header">
+                        <h3 class="project-title">Dragon Ball Spectrum Remastered</h3>
+                        <span class="project-status">ACTIVE_MAINTENANCE</span>
+                    </div>
+                    
+                    <div class="project-stats">
+                        <span>VISITS: <b>3.6M+</b></span>
+                        <span>CCU: <b id="ccu-val">120+</b></span>
+                    </div>
+
+                    <!-- Active Codes HUD -->
+                    <div class="codes-hud">
+                        <span class="codes-title">ACTIVE_GAMECODES</span>
+                        <div class="code-item"><div class="tick-icon"></div> 70Likes</div>
+                        <div class="code-item"><div class="tick-icon"></div> Holidayz</div>
+                        <div class="code-item"><div class="tick-icon"></div> JoshisaDork</div>
+                    </div>
+
+                    <p id="dbs-bio" style="color: var(--text-dim); margin-bottom: 30px; font-size: 14px; font-weight: 200;">Syncing real-time game intelligence from VyrJion Network...</p>
+                    
+                    <a href="https://www.roblox.com/games/6345516181/CUTSCENE-FIX-Dragon-Ball-Spectrum-Remastered" target="_blank" style="color: #fff; text-decoration: none; border-bottom: 1px solid var(--primary); padding-bottom: 5px; font-size: 11px; letter-spacing: 2px;">LAUNCH_PROJECT</a>
+                </div>
+            </div>
+
+            <!-- Spectrum WIP -->
+            <div class="project-card" data-aos="fade-up">
+                <div class="project-info">
+                    <div class="project-header">
+                        <h3 class="project-title">Dragon Ball :// Spectrum</h3>
+                        <span class="project-status">UNDER_REMODEL [70%]</span>
+                    </div>
+                    <div class="project-stats">
+                        <span>TYPE: <b>OPEN_WORLD_RPG</b></span>
+                        <span>FOCUS: <b>DYNAMIC_PVP</b></span>
+                    </div>
+                    <p style="color: var(--text-dim); margin-bottom: 30px;">A complete remake of the original title. Featuring new dynamic PVP systems, character slots, expanded races, and a massive open-world adventure.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Planned Projects -->
+        <section id="planned">
+            <span class="section-label">FUTURE_PIPELINE</span>
+            <h2>Planned Projects</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div class="project-card" data-aos="fade-right">
+                    <div class="project-info">
+                        <h3 class="project-title" style="font-size: 1.5rem;">Blox :// Fighters</h3>
+                        <p style="font-size: 13px; color: var(--text-dim); margin-top: 15px;">[ Undisclosed Project Phase ]</p>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-left">
+                    <div class="project-info">
+                        <h3 class="project-title" style="font-size: 1.5rem;">Aether :// Legacy</h3>
+                        <p style="font-size: 13px; color: var(--text-dim); margin-top: 15px;">Planned Fantasy Medieval RPG architecture.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community -->
+        <section id="community">
+            <span class="section-label">COMMUNITY_HUBS</span>
+            <h2>Our Project Servers</h2>
+            <div class="community-grid">
+                <div class="community-card" data-aos="fade-up">
+                    <h4>Dragon Ball :// Spectrum</h4>
+                    <p style="color: var(--text-dim); margin-bottom: 25px; font-size: 13px;">Join the Official Dragon Ball :// Spectrum Server! For community events & updates.</p>
+                    <a href="https://discord.gg/h9jqStGuHS" target="_blank" class="community-btn">JOIN_DISCORD</a>
+                </div>
+                <div class="community-card" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Aether :// Legacy</h4>
+                    <p style="color: var(--text-dim); margin-bottom: 25px; font-size: 13px;">Official community server for Aether Legacy.</p>
+                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-dim);">[UNAVAILABLE]</span>
+                </div>
+                <div class="community-card" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Blox :// Fighters</h4>
+                    <p style="color: var(--text-dim); margin-bottom: 25px; font-size: 13px;">Official community server for Blox Fighters.</p>
+                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-dim);">[UNAVAILABLE]</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hierarchy -->
+        <section id="structure">
+            <span class="section-label">COMMAND_MATRIX</span>
+            <h2>Hierarchy</h2>
+            <div class="hierarchy-grid">
+                <div class="h-card" data-aos="fade-up">
+                    <div class="h-label">Foundership</div>
+                    <div class="h-role">
+                        <h4>Chairmen</h4>
+                        <p>Jann Peruz & Jozef Archām</p>
+                    </div>
+                    <div class="h-role">
+                        <h4>Chairman's Plenipotentiary</h4>
+                        <p>Aldricht & Pyro</p>
+                    </div>
+                    <div class="h-role">
+                        <h4>Executive Board</h4>
+                        <p>Kibito & Gigie</p>
+                    </div>
+                </div>
+                <div class="h-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-label">Executive Management</div>
+                    <div class="h-role">
+                        <h4>Project Managers</h4>
+                        <p>Directly managed by the Chairman.</p>
+                    </div>
+                    <div class="h-role">
+                        <h4>Development Director</h4>
+                        <p>Head of all studio operations.</p>
+                    </div>
+                </div>
+                <div class="h-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-label">Operational Units</div>
+                    <div class="h-role">
+                        <h4>QA Department</h4>
+                        <p>Testers Team, Concept Team, Balancers.</p>
+                    </div>
+                    <div class="h-role">
+                        <h4>Social Affiliation</h4>
+                        <p>Marketing Team, Partnership Team.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Careers -->
+        <section id="careers">
+            <span class="section-label">RECRUITMENT_INTEL</span>
+            <h2>Open Careers</h2>
+            <div class="career-grid">
+                <div class="job-card" data-aos="fade-up">
+                    <h4>Luau Programmers</h4>
+                    <span class="availability">2 POSITIONS AVAILABLE</span>
+                </div>
+                <div class="job-card" data-aos="fade-up" data-aos-delay="100">
+                    <h4>3D Modellers</h4>
+                    <span class="availability">1 POSITION AVAILABLE</span>
+                </div>
+                <div class="job-card" data-aos="fade-up" data-aos-delay="200">
+                    <h4>GUI Artists</h4>
+                    <span class="availability">1 POSITION AVAILABLE</span>
+                </div>
+                <div class="job-card" data-aos="fade-up" data-aos-delay="300">
+                    <h4>Graphics FX Artists</h4>
+                    <span class="availability">1 POSITION AVAILABLE</span>
+                </div>
+            </div>
+            <p style="margin-top: 40px; font-size: 14px; color: var(--text-dim);">Interested candidates may contact <b>V_isenricht</b> (Jozef Archām) via Discord for contract details.</p>
+        </section>
+
+        <!-- TOS -->
+        <section id="tos">
+            <span class="section-label">LEGAL_PROTOCOL</span>
+            <h2>Terms of Service</h2>
+            <div class="tos-container" data-aos="fade-up">
+                <div class="tos-content">
+                    <h3>1. ACCEPTANCE OF TERMS</h3>
+                    <p>By accessing the VyrJion Studios® Network Hub, you agree to be bound by these terms. We provide high-quality development architecture and game environments subject to these protocols.</p>
+                    
+                    <h3>2. INTELLECTUAL PROPERTY</h3>
+                    <p>All assets, code, designs, and cinematic frameworks within the VyrJion ecosystem are the exclusive property of the Foundership. Unauthorized redistribution or modification is strictly prohibited.</p>
+                    
+                    <h3>3. USER CONDUCT</h3>
+                    <p>Users within our environments must maintain professional standards. Any attempt to exploit, disrupt, or undermine our network stability will result in immediate termination of access.</p>
+                    
+                    <h3>4. DEVELOPMENT CONTRACTS</h3>
+                    <p>Hired developers (Commissioned or Long-Term) are bound by their individual signed agreements. All development authority originates from the respective departments.</p>
+                    
+                    <h3>5. LIMITATION OF LIABILITY</h3>
+                    <p>VyrJion Studios® provides services "as is." We are not liable for any indirect or consequential damages arising from the use of our digital architecture.</p>
+                    
+                    <h3>6. AMENDMENTS</h3>
+                    <p>The Foundership reserves the right to modify these terms at any time to preserve the integrity of the studio's vision.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-credit">DESIGN_VISION: JOZEF ARCHĀM</div>
+        <div class="footer-links">
+            <span>© 2026 VYRJION STUDIOS®</span>
+            <span>ELITE_NETWORK_OPERATIONS</span>
+            <a href="https://www.roblox.com/communities/10073825/VyrJion-Studios#!/about" style="color: inherit; text-decoration: none;">ROBLOX_GROUP</a>
         </div>
-      </a>
-    </div>
-  </section>
+    </footer>
 
-  <section id="codes">
-    <span class="section-tag">Rewards // 03</span>
-    <h2>Active Gamecodes</h2>
-    <div class="codes-container" data-aos="fade-up">
-      <div class="code-status">// NO_ACTIVE_CODES_FOUND: AWAITING_ENCRYPTION</div>
-    </div>
-  </section>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
 
-  <section id="departments">
-    <span class="section-tag">Infrastructure // 04</span>
-    <h2>Operational Units</h2>
-    <div class="dept-grid">
-      <div class="dept-card" data-aos="fade-up">
-        <div class="dept-name">Department of Social Affiliation</div>
-        <div class="dept-manager">MANAGER: [VACANT]</div>
-        <ul class="team-list">
-          <li class="team-item">Marketing Team</li>
-          <li class="team-item">Partnership Team</li>
-        </ul>
-      </div>
-      <div class="dept-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="dept-name">Quality Assurance Department</div>
-        <div class="dept-manager">MANAGER: [VACANT]</div>
-        <ul class="team-list">
-          <li class="team-item">Testers Team</li>
-          <li class="team-item">Concept Team</li>
-          <li class="team-item">Balancers</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-follower');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            follower.style.left = (e.clientX - 15) + 'px';
+            follower.style.top = (e.clientY - 15) + 'px';
+        });
 
-  <section id="leadership">
-    <span class="section-tag">Protocol // 05</span>
-    <h2>Chain of Command</h2>
-    <div class="coc-container">
-      <div class="coc-level" style="display: flex; gap: 30px;">
-        <div class="coc-box" data-aos="fade-down">
-          <img src="https://media.discordapp.net/attachments/915489521783676929/1515739021408600174/CHAIRMAN.png?ex=6a301977&is=6a2ec7f7&hm=0ef2929f38fb65c0d253590e3dc1dea4ad53952dd14d4e6974c874c5e8a3539c&=&format=webp&quality=lossless&width=419&height=419" alt="Chairman" class="coc-icon">
-          <span class="coc-role">FOUNDERSHIP</span>
-          <div class="coc-name">Jozef Archām</div>
-        </div>
-        <div class="coc-box" data-aos="fade-down">
-          <img src="https://media.discordapp.net/attachments/915489521783676929/1515739021408600174/CHAIRMAN.png?ex=6a301977&is=6a2ec7f7&hm=0ef2929f38fb65c0d253590e3dc1dea4ad53952dd14d4e6974c874c5e8a3539c&=&format=webp&quality=lossless&width=419&height=419" alt="Chairman" class="coc-icon">
-          <span class="coc-role">FOUNDERSHIP</span>
-          <div class="coc-name">Jan Peruz</div>
-        </div>
-      </div>
-      <div class="coc-level" data-aos="fade-down" data-aos-delay="200">
-        <div class="coc-box">
-          <img src="https://media.discordapp.net/attachments/915489521783676929/1515739021098352813/AFAFAFAFAFA-removebg-preview.png?ex=6a301977&is=6a2ec7f7&hm=4ffa869107c19581f5f8aba62dd2af48247a3e4080dca797e2af3e64ff97e9ae&=&format=webp&quality=lossless&width=365&height=479" alt="Plenipotentiary" class="coc-icon">
-          <span class="coc-role">CHAIRMAN'S-PLENIPOTENTIARY</span>
-          <div class="coc-name">Aldrichtt & Pyro</div>
-        </div>
-      </div>
-      <div class="coc-level" data-aos="fade-down" data-aos-delay="400">
-        <div class="coc-box">
-          <img src="https://media.discordapp.net/attachments/915489521783676929/1515739020850892902/PLENIPOTENTARY.png?ex=6a301977&is=6a2ec7f7&hm=7379c4aed7d3bd90dba2e9bcd52735280f477314f59b4afcbf648c581ddc2fea&=&format=webp&quality=lossless&width=362&height=375" alt="Executive" class="coc-icon">
-          <span class="coc-role">EXECUTIVE BOARD</span>
-          <div class="coc-name">Kibito & Gigie</div>
-        </div>
-      </div>
-    </div>
-  </section>
+        // Click Ripple
+        document.addEventListener('mousedown', (e) => {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            document.body.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
 
-  <footer>
-    <div class="footer-credit" data-aos="zoom-in">DESIGN_VISION: JOZEF ARCHĀM</div>
-    <div class="footer-bottom">
-      <p>© 2026 VYRJION_NETWORK_OPERATIONS</p>
-      <p>ELITE_PROTOCOL_ACTIVE</p>
-    </div>
-  </footer>
+        // High-Intensity Banner
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 150 };
 
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true });
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
 
-    // GSAP Entry
-    gsap.to('#hero-h1', { opacity: 1, y: 0, duration: 1.5, ease: 'power4.out', delay: 0.5 });
-    gsap.to('#hero-p', { opacity: 1, y: 0, duration: 1.2, ease: 'power4.out', delay: 0.8 });
-
-    // Custom Cursor
-    const cursor = document.getElementById('cursor');
-    const follower = document.getElementById('cursor-follower');
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      follower.style.left = (e.clientX - 15) + 'px';
-      follower.style.top = (e.clientY - 15) + 'px';
-    });
-
-    // Click Ripple
-    document.addEventListener('mousedown', (e) => {
-      const ripple = document.createElement('div');
-      ripple.className = 'ripple';
-      ripple.style.left = e.clientX + 'px';
-      ripple.style.top = e.clientY + 'px';
-      document.body.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
-    });
-
-    // High-Intensity Banner
-    const canvas = document.getElementById('hero-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let mouse = { x: null, y: null, radius: 150 };
-
-    window.addEventListener('mousemove', (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    });
-
-    function init() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      particles = [];
-      for(let i=0; i<150; i++) particles.push(new Particle());
-    }
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.baseX = this.x;
-        this.baseY = this.y;
-        this.size = 1;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.density = (Math.random() * 30) + 1;
-      }
-      update() {
-        this.x += this.vx; this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx*dx + dy*dy);
-        if (distance < mouse.radius) {
-          let forceDirectionX = dx / distance;
-          let forceDirectionY = dy / distance;
-          let force = (mouse.radius - distance) / mouse.radius;
-          this.x -= forceDirectionX * force * this.density * 0.5;
-          this.y -= forceDirectionY * force * this.density * 0.5;
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for(let i=0; i<150; i++) particles.push(new Particle());
         }
-      }
-    }
 
-    function animate() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particles.forEach((p, i) => {
-        p.update();
-        ctx.fillStyle = 'rgba(188, 19, 254, 0.8)';
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
-        for(let j=i+1; j<particles.length; j++) {
-          const p2 = particles[j];
-          const dist = Math.sqrt((p.x-p2.x)**2 + (p.y-p2.y)**2);
-          if(dist < 100) {
-            ctx.strokeStyle = `rgba(188, 19, 254, ${0.4 - dist/250})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
-          }
-        }
-      });
-      requestAnimationFrame(animate);
-    }
-    window.addEventListener('resize', init);
-    init(); animate();
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = 1;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.density = (Math.random() * 30) + 1;
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
 
-    // Roblox Stats
-    async function fetchStats() {
-      const universeId = "2348916833";
-      try {
-        const res = await fetch(`https://games.roproxy.com/v1/games?universeIds=${universeId}`);
-        const data = await res.json();
-        if(data.data && data.data[0]) {
-          const game = data.data[0];
-          document.getElementById('dbs-ccu').innerText = game.playing.toLocaleString();
-          document.getElementById('ccu-stat').innerText = game.playing.toLocaleString();
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                if (distance < mouse.radius) {
+                    let forceDirectionX = dx / distance;
+                    let forceDirectionY = dy / distance;
+                    let force = (mouse.radius - distance) / mouse.radius;
+                    this.x -= forceDirectionX * force * this.density * 0.5;
+                    this.y -= forceDirectionY * force * this.density * 0.5;
+                }
+            }
         }
-        const infoRes = await fetch(`https://games.roproxy.com/v1/games/multiget-main?universeIds=${universeId}`);
-        const infoData = await infoRes.json();
-        if(infoData[0]) document.getElementById('dbs-bio').innerText = infoData[0].description;
-      } catch(e) {}
-    }
-    fetchStats();
-    setInterval(fetchStats, 30000);
-  </script>
+
+        function animate() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            particles.forEach((p, i) => {
+                p.update();
+                ctx.fillStyle = 'rgba(188, 19, 254, 0.8)';
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+                for(let j=i+1; j<particles.length; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.sqrt((p.x-p2.x)**2 + (p.y-p2.y)**2);
+                    if(dist < 100) {
+                        ctx.strokeStyle = `rgba(188, 19, 254, ${0.4 - dist/250})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+        window.addEventListener('resize', init);
+        init(); animate();
+
+        // Stats & Bio Proxy
+        async function fetchStats() {
+            try {
+                // Fetch CCU
+                const statsResponse = await fetch('https://games.roproxy.com/v1/games?universeIds=2348916833');
+                const statsData = await statsResponse.json();
+                if(statsData.data && statsData.data[0]) {
+                    document.getElementById('ccu-val').innerText = statsData.data[0].playing.toLocaleString() + '+';
+                }
+
+                // Fetch Description
+                const bioResponse = await fetch('https://games.roproxy.com/v1/games/multiget-place-details?placeIds=6345516181');
+                const bioData = await bioResponse.json();
+                if(bioData[0] && bioData[0].description) {
+                    document.getElementById('dbs-bio').innerText = bioData[0].description;
+                }
+            } catch(e) { console.log('Network sync failed'); }
+        }
+        setInterval(fetchStats, 30000);
+        fetchStats();
+    </script>
 </body>
 </html>
