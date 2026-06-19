@@ -47,8 +47,31 @@
         #hero-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.6; pointer-events: none; }
 
         /* Custom Cursor - Hidden on mobile */
-        #cursor { width: 4px; height: 4px; background: #fff; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; box-shadow: 0 0 15px #fff; display: none; }
-        #cursor-follower { width: 30px; height: 30px; border: 0.5px solid var(--primary); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s cubic-bezier(0.2, 1, 0.3, 1); display: none; }
+        #cursor { 
+            width: 24px; 
+            height: 24px; 
+            background: url('https://cdn.cursors-4u.net/previews/arrow-cc57eb95.webp') no-repeat center; 
+            background-size: contain;
+            position: fixed; 
+            pointer-events: none; 
+            z-index: 10000; 
+            /* Hue-rotate to purple and add drop shadow */
+            filter: hue-rotate(240deg) brightness(1.2) contrast(1.2) drop-shadow(0 0 4px var(--primary));
+            display: none; 
+        }
+        #cursor-follower { 
+            width: 30px; 
+            height: 30px; 
+            border: 1px solid var(--primary); 
+            border-radius: 50%; 
+            position: fixed; 
+            pointer-events: none; 
+            z-index: 9999; 
+            transition: transform 0.12s cubic-bezier(0.2, 1, 0.3, 1); 
+            display: none; 
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 60%);
+            opacity: 0.4;
+        }
         
         @media (min-width: 1025px) {
             #cursor, #cursor-follower { display: block; }
@@ -502,6 +525,24 @@
             mouse.x = e.x;
             mouse.y = e.y;
         });
+        
+        // Touch support for mobile
+        window.addEventListener('touchstart', e => {
+            if (e.touches.length > 0) {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
+            }
+        });
+        window.addEventListener('touchmove', e => {
+            if (e.touches.length > 0) {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
+            }
+        });
+        window.addEventListener('touchend', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
 
         class Particle {
             constructor() {
@@ -587,12 +628,18 @@
         function init() {
             particles = [];
             dustSpecs = [];
-            let numberOfParticles = (canvas.width * canvas.height) / 5000;
+            
+            // Adjust particle count for mobile performance
+            const isMobile = window.innerWidth <= 1024;
+            const particleDensity = isMobile ? 8000 : 5000;
+            const dustCount = isMobile ? 100 : 200;
+
+            let numberOfParticles = (canvas.width * canvas.height) / particleDensity;
             for (let i = 0; i < numberOfParticles; i++) {
                 particles.push(new Particle());
             }
             // Add dust specs
-            for (let i = 0; i < 200; i++) {
+            for (let i = 0; i < dustCount; i++) {
                 dustSpecs.push(new Dust());
             }
         }
@@ -636,13 +683,13 @@
         animate();
 
         // Custom Cursor Logic (PC Only)
-        if (window.innerWidth > 1024) {
+                if (window.innerWidth > 1024) {
             const cursor = document.getElementById('cursor');
             const follower = document.getElementById('cursor-follower');
-            
             window.addEventListener('mousemove', e => {
-                gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
-                gsap.to(follower, { x: e.clientX - 15, y: e.clientY - 15, duration: 0.15 });
+                // Offset cursor slightly to align with the arrow tip
+                gsap.to(cursor, { x: e.clientX - 2, y: e.clientY - 2, duration: 0 });
+                gsap.to(follower, { x: e.clientX - 15, y: e.clientY - 15, duration: 0.12 });
             });
 
             window.addEventListener('mousedown', e => {
